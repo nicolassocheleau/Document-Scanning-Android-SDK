@@ -65,7 +65,8 @@ internal class ImageCropFragment : BaseFragment() {
 
         val sourceBitmap = BitmapFactory.decodeFile(getScanActivity().originalImageFile.absolutePath)
         if (sourceBitmap != null) {
-            selectedImage = determineImageRotation(getScanActivity().originalImageFile, sourceBitmap)
+            // keep original image orientation
+            selectedImage = sourceBitmap
         } else {
             Log.e(TAG, DocumentScannerErrorModel.ErrorMessage.INVALID_IMAGE.error)
             onError(DocumentScannerErrorModel(DocumentScannerErrorModel.ErrorMessage.INVALID_IMAGE))
