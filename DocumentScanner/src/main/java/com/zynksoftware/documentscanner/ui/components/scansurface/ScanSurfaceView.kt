@@ -126,7 +126,6 @@ internal class ScanSurfaceView : FrameLayout {
 
         imageCapture = null
         imageCapture = ImageCapture.Builder()
-            .setTargetRotation(Surface.ROTATION_0)
             .setFlashMode(flashMode)
             .build()
     }
@@ -138,7 +137,6 @@ internal class ScanSurfaceView : FrameLayout {
     private fun setUseCases() {
         preview = Preview.Builder()
             .setTargetResolution(previewSize)
-            .setTargetRotation(Surface.ROTATION_0)
             .build()
             .also {
                 it.setSurfaceProvider(viewFinder.surfaceProvider)
@@ -153,7 +151,6 @@ internal class ScanSurfaceView : FrameLayout {
         imageAnalysis = ImageAnalysis.Builder()
             .setBackpressureStrategy(ImageAnalysis.STRATEGY_KEEP_ONLY_LATEST)
             .setTargetResolution(android.util.Size(width, height))
-            .setTargetRotation(Surface.ROTATION_0)
             .build()
 
         imageAnalysis?.setAnalyzer(ContextCompat.getMainExecutor(context), { image ->
